@@ -1,3 +1,4 @@
+/* eslint-disable no-unexpected-multiline */
 import styled from 'styled-components';
 import { RootVariables } from './index';
 import { BsFillArrowLeftCircleFill, BsFillArrowRightCircleFill } from 'react-icons/bs';
@@ -79,7 +80,8 @@ export const ModalContainer = styled.div
     position : absolute;
     background-color : ${RootVariables.__var_LightBackground};
     height : 100%;
-    width : 100%
+    width : 100%;
+    z-index : 9;
 `
 
 export const AuthModal = styled.ul 

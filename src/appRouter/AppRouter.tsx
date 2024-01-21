@@ -33,7 +33,7 @@ export const AppRouter = () => {
 
   return (
     <>
-      <Navbar/>
+        { isAuthenticated && <Navbar/> }
         <Routes>
             { 
               nav.map((r, i) => {
