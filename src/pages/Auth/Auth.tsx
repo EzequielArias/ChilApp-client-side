@@ -42,7 +42,10 @@ export const Auth = () => {
   const { form, formChange, setForm } = useForm(initialState);
   const { callEndpoint } = useFetchAndLoad();
   const listRef = useRef<HTMLUListElement>(null);
-
+  /**
+   Crear un slider con fotos a modo de demostracion de la aplicacion en donde esta
+   el gif japones del auth
+   */
   useEffect(() => {
     if(listRef.current){
       let listCurrent = listRef.current
