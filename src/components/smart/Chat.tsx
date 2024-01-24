@@ -18,14 +18,11 @@ export const Chat = () => {
   useEffect(() => {
     
     const fillChats = async () => {
+
     const { data } = await callEndpoint(GetChats(localStorage.getItem('jwt')!));
     dispatch(getChats(ChatUserAdapter( data, id )))
     }
     fillChats();
-
-    return () => {
-
-    }
   },[])
 
   return (

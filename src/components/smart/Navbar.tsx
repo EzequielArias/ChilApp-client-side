@@ -5,15 +5,15 @@ import {
     SectionContainer,
     SectionItem,
     ToolsContainer,
-    SearchInput,
     DivIcon,
     DivInput
 } from '../styled-components';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 //import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
-import { useLocalStorage, useForm } from '../../hooks';
+import { useForm } from '../../hooks';
 import { useNavigate, useLocation } from 'react-router-dom';
+//import MoreVertIcon from '@mui/icons-material/MoreVert';
 
 export const Navbar = () => {
 
@@ -30,8 +30,6 @@ export const Navbar = () => {
 
   const navigate = useNavigate();
   const location = useLocation();
-
-  const { getUserData } = useLocalStorage()
 
   const handleSelected = (item : string) => {
     if(item === 'chat')
@@ -103,16 +101,6 @@ export const Navbar = () => {
     setResult(false)
     navigate('/')
   }
-
-  useEffect(() => {
-    
-    getUserData()
-
-    return () => {
-
-    }
-
-  },[])
 
   return (
     <>

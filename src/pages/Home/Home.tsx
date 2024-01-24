@@ -13,6 +13,7 @@ display : flex;
   flex-direction : center;
   width : 100%;
   height : 100%;
+  overflow : hidden;
 }
 `
 
@@ -22,7 +23,7 @@ export const Home = () => {
 
   return (
     <>
-      <ul style={{ display : "flex", height : "100%"}}>
+      <ul style={{ display : "flex", height : "100%", overflow : "hidden"}}>
       {
         FC.map((El, i) => {
           return (

@@ -129,16 +129,13 @@ export const Auth = () => {
         <LeftArrow onClick={() => handleIndexCard('back')} />
         <RightArrow onClick={() => handleIndexCard('foward')} />
         <AuthModal ref={listRef} >
-          {
-            Avatars.map((el, i) => {
-              return (<>
-              ( 
-              <li key={i}>
-                <ModalAvatars src={el} alt="" onClick={handleImage}/>
-              </li> 
-              )</>)
-            })
-          }  
+        {
+          Avatars.map((el, i) => (
+            <li key={i}>
+              <ModalAvatars src={el} alt="" onClick={handleImage} />
+            </li>
+          ))
+        }
         </AuthModal>
       </Modal>
     <ThemeProvider theme={theme}>

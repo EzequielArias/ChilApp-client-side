@@ -30,7 +30,8 @@ interface ChatRes {
 export const ChatUserAdapter = ( data : GetChatsResponse, sessionUserId : string) => {
 
   const cleanedData = data.chats.map((el) => {
-        
+        console.log('Hola mundo')
+        console.log(el)
         if(el.owners.owner1._id === sessionUserId){
             return {
                 chatId : el._id,

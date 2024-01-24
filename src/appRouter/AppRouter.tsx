@@ -5,27 +5,32 @@ import { StoreType } from "../redux/store"
 import { Navbar } from "../components"
 import { useLocalStorage } from "../hooks"
 import { useEffect } from "react"
+import { PageLoader } from "../components/dumb/Loaders"
+import { useLocation } from "react-router-dom"
 
 export const AppRouter = () => {
+
+  const location = useLocation();
 
   const { isAdmin, isAuthenticated } = useSelector((state : StoreType) => state.user );
   const { isLoaded } = useSelector((state : StoreType) => state.rendering );
 
   const { getUserData } = useLocalStorage();
 
-  useEffect(() => {
-    
+  useEffect(() => { 
     getUserData()
-    return () => {
-
-    }
-
   },[])
+
+  if(!isLoaded){
+    return (
+      <PageLoader/>
+    )
+  }
 
 
   return (
     <>
-        { isAuthenticated && <Navbar/> }
+       { !location.pathname.includes("/auth") && <Navbar/> }
         <Routes>
             { 
               nav.map((r, i) => {

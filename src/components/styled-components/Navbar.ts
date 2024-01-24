@@ -185,5 +185,6 @@ export const LogoText = styled(Link)
     font-size : 35px;
     color : white;
     padding : 15px;
+    font-family : cursive;
 `
 

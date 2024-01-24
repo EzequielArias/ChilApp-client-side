@@ -5,8 +5,6 @@ import { AppRouter } from "./appRouter/AppRouter";
 
 function App() {
 
-  
-
   return (
     <>
       <BrowserRouter>

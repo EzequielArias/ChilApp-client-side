@@ -6,7 +6,7 @@ export const ChatSlotContainer = styled.div
     justify-content : space-between;
     align-items : center;
     padding : 15px;
-    width : 490px;
+    width : 100%;
 
     &:hover {
         background-color : #dcdcdc;

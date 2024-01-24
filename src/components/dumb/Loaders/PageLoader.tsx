@@ -4,6 +4,7 @@ export const PageLoader = () => {
   return (
     <div style={{
       display : "flex",
+      flexDirection : "column",
       alignContent : "center",
       alignItems : "center",
       justifyContent : "center",
@@ -11,6 +12,7 @@ export const PageLoader = () => {
       height : "100%",
       backgroundColor : "black"
   }}>
+        <h1 style={{ color : "violet", fontSize : "150px", fontFamily : "cursive"}}>Chill App</h1>
         <ProgressBar
             visible={true}
             barColor='violet'
