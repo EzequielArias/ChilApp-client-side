@@ -188,3 +188,17 @@ export const LogoText = styled(Link)
     font-family : cursive;
 `
 
+export const SubInfoContainer = styled.section `
+    display : flex;
+    justify-content : center;
+    align-items : center;
+
+    & > svg {
+        color : white;
+        font-size : 50px;
+        &:hover {
+            color : grey;
+            cursor : pointer;
+        }
+    }
+`

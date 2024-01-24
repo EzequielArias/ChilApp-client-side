@@ -27,7 +27,6 @@ export const AppRouter = () => {
     )
   }
 
-
   return (
     <>
        { !location.pathname.includes("/auth") && <Navbar/> }

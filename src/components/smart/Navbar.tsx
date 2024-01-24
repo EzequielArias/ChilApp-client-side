@@ -6,14 +6,15 @@ import {
     SectionItem,
     ToolsContainer,
     DivIcon,
-    DivInput
+    DivInput,
+    SubInfoContainer
 } from '../styled-components';
 import { useState } from 'react';
 //import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useForm } from '../../hooks';
 import { useNavigate, useLocation } from 'react-router-dom';
-//import MoreVertIcon from '@mui/icons-material/MoreVert';
+import { PositionedMenu } from '../dumb';
 
 export const Navbar = () => {
 
@@ -22,6 +23,7 @@ export const Navbar = () => {
     novedades : false,
     llamadas : false
   })
+
   const [ search, setSearch ] = useState(false);
   const [ result, setResult ] = useState(false);
   const { form, formChange } = useForm({
@@ -107,6 +109,7 @@ export const Navbar = () => {
     <NavbarContainer>
         <InfoContainer>
           <LogoText to={"/"}>ChillApp</LogoText>
+          <SubInfoContainer>
           {
             result
             ? 
@@ -133,6 +136,8 @@ export const Navbar = () => {
             </ToolsContainer>
             ) 
           }
+          <PositionedMenu/>
+          </SubInfoContainer>
         </InfoContainer>
         
         <SectionContainer>
