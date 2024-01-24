@@ -8,10 +8,10 @@ import { useEffect } from "react"
 
 export const AppRouter = () => {
 
-  const { isAdmin, isAuthenticated } = useSelector((state : StoreType) => state.user )
-  const { isLoaded } = useSelector((state : StoreType) => state.rendering )
+  const { isAdmin, isAuthenticated } = useSelector((state : StoreType) => state.user );
+  const { isLoaded } = useSelector((state : StoreType) => state.rendering );
 
-  const { getUserData } = useLocalStorage()
+  const { getUserData } = useLocalStorage();
 
   useEffect(() => {
     
@@ -22,14 +22,6 @@ export const AppRouter = () => {
 
   },[])
 
-
-  if(!isLoaded){
-    return (
-      <h1>
-        LOADING COMPONENTS...
-      </h1>
-    )
-  }
 
   return (
     <>

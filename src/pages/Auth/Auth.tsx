@@ -10,7 +10,7 @@ import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Paper from '@mui/material/Paper';
-import { ModalContainer, LeftArrow, RightArrow, AuthModal, ModalAvatars } from '../../components/styled-components';
+import { LeftArrow, RightArrow, AuthModal, ModalAvatars } from '../../components/styled-components';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../../components';
 import { Modal } from '../../components';
@@ -45,6 +45,8 @@ export const Auth = () => {
   /**
    Crear un slider con fotos a modo de demostracion de la aplicacion en donde esta
    el gif japones del auth
+   que sea unidireccional (
+   que no importa a que lado vaya siempre agarre el siguiente o anterios)
    */
   useEffect(() => {
     if(listRef.current){
@@ -93,7 +95,7 @@ export const Auth = () => {
     e.preventDefault();
     
     const formData = {
-        name : form.name,
+        name : form.email.split("@")[0],
         email: form.email,
         password: form.password,
         img : form.avatar.split("/").at(-1) as string

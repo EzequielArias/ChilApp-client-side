@@ -6,6 +6,7 @@ import { useFetchAndLoad } from "../../hooks"
 import { getChats } from "../../redux/slices"
 import { ChatUserAdapter } from "../../adapter"
 import { StoreType } from "../../redux/store"
+import { PageLoader } from "../dumb/Loaders"
 
 export const Chat = () => {
 
@@ -20,7 +21,6 @@ export const Chat = () => {
     const { data } = await callEndpoint(GetChats(localStorage.getItem('jwt')!));
     dispatch(getChats(ChatUserAdapter( data, id )))
     }
-
     fillChats();
 
     return () => {
@@ -29,10 +29,10 @@ export const Chat = () => {
   },[])
 
   return (
-    <div>
+    <>
       {
         chat.length === 0 ?
-        (<h1>Cargando compi...</h1>) :
+        (<PageLoader/>) :
         (chat.map((el) => {
           return (
           <ChatSlot
@@ -45,6 +45,6 @@ export const Chat = () => {
           )
         })) 
       }
-    </div>
+    </>
   )
 }
