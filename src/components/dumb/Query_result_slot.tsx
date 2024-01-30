@@ -39,8 +39,8 @@ export const Query_result_slot = ({el, Avatars} : { el : IQueryUsers, Avatars : 
     if(value)
     {
       try {
-        const token = localStorage.getItem('jwt') as string
-        const { data } = await callEndpoint(newChat(token, { userId1 : el.id, userId2 : id}))
+        const token = localStorage.getItem('jwt') as string;
+        const { data } = await callEndpoint(newChat(token, { userId1 : el.id, userId2 : id}));
         console.log(data)
         navigate("/")
       } catch (error) {

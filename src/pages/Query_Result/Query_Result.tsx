@@ -6,21 +6,22 @@ import { useDispatch, useSelector } from "react-redux";
 
 // Styled-components 
 import { QueryResultContainer, 
-         ResultSlot, 
-         ResultULContainer, 
-         ResultIMG, 
-         SlotLIItemsContainer, 
-         SlotUser
+         ResultULContainer,      
         } from "../../components/styled-components";
 import { useEffect } from "react";
-import { Progress_bar, Query_result_slot } from "../../components";
+import { Query_result_slot } from "../../components";
 import { StoreType } from "../../redux/store";
-import { Avatars} from '../../assets';
+import { Avatars } from '../../assets';
+import { PageLoader } from "../../components";
+import { useNotFound } from "../../context";
+import { useNavigate } from "react-router-dom";
 
 export const Query_Result = () => {
 
   const [ query ] = useSearchParams();
   const { loading, callEndpoint } = useFetchAndLoad();
+  const { handleText } = useNotFound();
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const { results } = useSelector((state : StoreType) => state.query_results);
 
@@ -32,13 +33,25 @@ export const Query_Result = () => {
       {
         const name = query.get('name');
         const { data } = await callEndpoint(GetUsersByQuery(`?name=${name}`, tk));
-       dispatch(getQueryUsers(data))
+
+        if(!data.length){
+          handleText(`No se encontro a el usuario ${name}`, "Prueba buscando su email")
+          navigate("NotFound404");
+        }
+
+        dispatch(getQueryUsers(data))
       }
   
       if(query.get('email'))
       {
         const email = query.get('email');
         const { data } = await callEndpoint(GetUsersByQuery(`?email=${email}`, tk));
+
+        if(!data.length){
+          handleText(`No se encontro a el usuario ${email}`, "Prueba buscando por su nombre")
+          navigate("NotFound404");
+        }
+
         dispatch(getQueryUsers(data))
       }
     }
@@ -55,7 +68,7 @@ export const Query_Result = () => {
             loading || results.length === 0 ) 
           ? 
           (
-            <Progress_bar loading={loading}/>
+            <PageLoader/>
           ) 
           :
           (

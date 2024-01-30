@@ -7,6 +7,7 @@ import { useLocalStorage } from "../hooks"
 import { useEffect } from "react"
 import { PageLoader } from "../components/dumb/Loaders"
 import { useLocation } from "react-router-dom"
+import { NotFoundProvider } from "../context"
 
 export const AppRouter = () => {
 
@@ -28,7 +29,7 @@ export const AppRouter = () => {
   }
 
   return (
-    <>
+    <NotFoundProvider>
        { !location.pathname.includes("/auth") && <Navbar/> }
         <Routes>
             { 
@@ -48,7 +49,7 @@ export const AppRouter = () => {
                 })
             }
         </Routes>
-    </>
+    </NotFoundProvider>
   )
 }
 

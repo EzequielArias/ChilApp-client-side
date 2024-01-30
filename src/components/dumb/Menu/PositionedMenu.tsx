@@ -34,6 +34,7 @@ export function PositionedMenu() {
         anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
+        sx={{ padding : 0}}
         anchorOrigin={{
           vertical: 'bottom',
           horizontal: 'left',
@@ -43,9 +44,9 @@ export function PositionedMenu() {
           horizontal: 'left',
         }}
       >
-        <MenuItem onClick={handleClose}>Profile</MenuItem>
-        <MenuItem onClick={handleClose}>My account</MenuItem>
-        <MenuItem onClick={handleClose}>Logout</MenuItem>
+        <MenuItem onClick={handleClose} sx={{ backgroundColor : "#af69ee"}}>Perfil</MenuItem>
+        <MenuItem onClick={handleClose} sx={{ backgroundColor : "#af69ee"}}>Ajustes</MenuItem>
+        <MenuItem onClick={handleClose} sx={{ backgroundColor : "#af69ee"}}>Cerrar sesión</MenuItem>
       </Menu>
     </div>
   );

@@ -9,14 +9,17 @@ import {
     DivInput,
     SubInfoContainer
 } from '../styled-components';
-import { useState } from 'react';
+import { KeyboardEvent, useEffect, useState, MouseEvent } from 'react';
 //import { BsThreeDotsVertical } from 'react-icons/bs';
 import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useForm } from '../../hooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { PositionedMenu } from '../dumb';
+import { useNotFound } from '../../context';
 
 export const Navbar = () => {
+
+  const { text } = useNotFound();
 
   const [selected, setSelected] = useState({
     chats : true,
@@ -71,13 +74,12 @@ export const Navbar = () => {
     setResult(false)
   }
   
-  const handleSearchBar = (e : any) => {
+  const handleSearchBar = (e : MouseEvent<HTMLInputElement>) => {
     e.stopPropagation()
     setSearch(!search)
   }
 
-  const searchPerson = (e : any ) =>{
-
+  const searchPerson = (e : KeyboardEvent<HTMLInputElement> ) =>{
     setSelected({
       chats : false,
       novedades : false,
@@ -101,8 +103,12 @@ export const Navbar = () => {
 
   const arrowNavigate = () => {
     setResult(false)
-    navigate('/')
+    navigate('/') 
   }
+
+  useEffect(() => {
+    text.length === 0 ? setResult(false) : ""
+  },[text]);
 
   return (
     <>
