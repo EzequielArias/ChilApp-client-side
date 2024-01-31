@@ -8,6 +8,7 @@ import { useEffect } from "react"
 import { PageLoader } from "../components/dumb/Loaders"
 import { useLocation } from "react-router-dom"
 import { NotFoundProvider } from "../context"
+import { PageSliderProvider } from "../context"
 
 export const AppRouter = () => {
 
@@ -30,6 +31,7 @@ export const AppRouter = () => {
 
   return (
     <NotFoundProvider>
+      <PageSliderProvider>
        { !location.pathname.includes("/auth") && <Navbar/> }
         <Routes>
             { 
@@ -49,6 +51,7 @@ export const AppRouter = () => {
                 })
             }
         </Routes>
+        </PageSliderProvider>
     </NotFoundProvider>
   )
 }

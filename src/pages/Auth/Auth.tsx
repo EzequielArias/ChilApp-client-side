@@ -15,7 +15,7 @@ import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { Copyright } from '../../components';
 import { Modal } from '../../components';
 
-import { useState, useRef, useEffect } from "react"
+import { useState, useRef, useEffect, FormEvent } from "react"
 import { Avatars } from '../../assets'
 import { useFetchAndLoad, useForm } from "../../hooks";
 import { LogIn, Register } from "../../services";
@@ -50,10 +50,10 @@ export const Auth = () => {
    */
   useEffect(() => {
     if(listRef.current){
-      let listCurrent = listRef.current
+      const listCurrent = listRef.current
 
       if(listCurrent.querySelector("li > img")){
-      let cardNode = listCurrent.querySelectorAll("li > img")[currentIndexCard]
+      const cardNode = listCurrent.querySelectorAll("li > img")[currentIndexCard]
         if(cardNode)
         {
           cardNode.scrollIntoView({
@@ -91,7 +91,7 @@ export const Auth = () => {
     }
   }
 
-  const handleSubmit = async (e : any) => {
+  const handleSubmit = async (e : FormEvent) => {
     e.preventDefault();
     
     const formData = {

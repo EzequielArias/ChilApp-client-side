@@ -1,31 +1,32 @@
-import { Chat, News, Call } from "../../components"
-import styled from 'styled-components';
-
-const Test = styled.div 
-`
-overflow : hidden;
-width : 100%;
-height : 84vh;
-display : flex;
-
-& > ul {
-  display : flex;
-  flex-direction : center;
-  width : 100%;
-  height : 100%;
-  overflow : hidden;
-}
-`
+import { useRef, useEffect } from "react";
+import { usePageSlider } from "../../context";
+import { HomeSections } from "../../constants";
 
 export const Home = () => {
 
-  const FC = [Chat, News, Call];
+  const { pageCurrentIndex } = usePageSlider();  
+  const pagesRef = useRef<HTMLUListElement>(null);
+
+  useEffect(() => {
+    if(pagesRef.current){
+      const current = pagesRef.current
+
+      if(current.querySelector("li > div")){
+      const cardNode = current.querySelectorAll("li > div")[pageCurrentIndex]
+        if(cardNode)
+        {
+          cardNode.scrollIntoView({
+            behavior : "smooth"
+          })
+        }}
+      }
+  },[pageCurrentIndex])
 
   return (
     <>
-      <ul style={{ display : "flex", height : "100%", overflow : "hidden"}}>
+      <ul style={{ display : "flex", overflow : "hidden"}} ref={pagesRef}>
       {
-        FC.map((El, i) => {
+        HomeSections.map((El, i) => {
           return (
             <li key={i} style={{ minWidth : "100%", height : "100%"}}>
               <El/>

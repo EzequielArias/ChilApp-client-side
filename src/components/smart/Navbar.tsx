@@ -15,11 +15,16 @@ import { AiOutlineArrowLeft } from 'react-icons/ai';
 import { useForm } from '../../hooks';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { PositionedMenu } from '../dumb';
-import { useNotFound } from '../../context';
+import { useNotFound, usePageSlider } from '../../context';
 
 export const Navbar = () => {
 
+  /**
+    Cambiar la logica del PageSlider porque si en un futuro tengo mas pages no va a funcionar
+   */
+
   const { text } = useNotFound();
+  const { handlePageIndex } = usePageSlider();
 
   const [selected, setSelected] = useState({
     chats : true,
@@ -39,6 +44,7 @@ export const Navbar = () => {
   const handleSelected = (item : string) => {
     if(item === 'chat')
     {
+      handlePageIndex(0);
       setSelected(() => {
         return {
           chats : true,
@@ -50,6 +56,7 @@ export const Navbar = () => {
 
     if(item === 'novedades')
     {
+      handlePageIndex(1);
       setSelected(() => {
         return {
           chats : false,
@@ -147,7 +154,6 @@ export const Navbar = () => {
         </InfoContainer>
         
         <SectionContainer>
-          <ul>
             <SectionItem 
               isactive={selected.chats}
               onClick={() => handleSelected('chat')}
@@ -160,13 +166,6 @@ export const Navbar = () => {
               >
               Novedades
             </SectionItem>
-            <SectionItem 
-              isactive={selected.llamadas}
-              onClick={() => handleSelected('llamadas')}
-             >
-              Llamadas
-            </SectionItem>
-          </ul>
         </SectionContainer>
     </NavbarContainer>
 

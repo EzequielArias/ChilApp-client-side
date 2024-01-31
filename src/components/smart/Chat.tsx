@@ -10,7 +10,7 @@ import { PageLoader } from "../dumb/Loaders"
 
 export const Chat = () => {
 
-  const { callEndpoint, loading } = useFetchAndLoad();
+  const { callEndpoint } = useFetchAndLoad();
   const dispatch = useDispatch();
   const { id } = useSelector(( state : StoreType ) => state.user);
   const { chat } = useSelector(( state : StoreType ) => state.chat);
@@ -26,7 +26,7 @@ export const Chat = () => {
   },[])
 
   return (
-    <>
+    <div>
       {
         chat.length === 0 ?
         (<PageLoader/>) :
@@ -42,6 +42,6 @@ export const Chat = () => {
           )
         })) 
       }
-    </>
+    </div>
   )
 }

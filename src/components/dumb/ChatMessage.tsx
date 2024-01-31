@@ -43,8 +43,9 @@ export const ChatMessage = (
             inputValue : msg
         });
         
+    
         const { data } = await callEndpoint(editMsg({ tk, messageId : id, chatId, body : value }));
-
+        console.log(data)
         setData(prev => {
             const newArr = prev.map((el) => el._id === id ? { _id : data.id, text : data.text, user : data.senderId } : el)
             console.log(newArr)
