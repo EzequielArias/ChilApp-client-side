@@ -28,7 +28,7 @@ export const Home = () => {
       {
         HomeSections.map((El, i) => {
           return (
-            <li key={i} style={{ minWidth : "100%", height : "100%"}}>
+            <li key={i} style={{ minWidth : "100%"}}>
               <El/>
             </li>
           )

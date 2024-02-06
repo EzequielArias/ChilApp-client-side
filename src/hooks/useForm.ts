@@ -16,7 +16,6 @@ export const useForm = <T> ( initialState : Partial<T>, socket? : any, ...args :
     })
 
     if(socket){
-      console.log(e.target.value.length)
       e.target.value.length > 0 
       ? socket.emit('is-typing', { receiverId : args[0].id, typing : true}) 
       : socket.emit('is-typing', { receiverId : args[0].id, typing : false}) 

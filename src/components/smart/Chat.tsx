@@ -26,7 +26,7 @@ export const Chat = () => {
   },[])
 
   return (
-    <div>
+    <>
       {
         chat.length === 0 ?
         (<PageLoader/>) :
@@ -42,6 +42,6 @@ export const Chat = () => {
           )
         })) 
       }
-    </div>
+    </>
   )
 }
